@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
-  <div>
+  <div class="h-screen flex flex-col">
     <NavBar />
     <router-view></router-view>
   </div>
