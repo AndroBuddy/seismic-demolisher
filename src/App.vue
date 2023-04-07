@@ -1,5 +1,7 @@
 <script setup>
 import NavBar from "./components/NavBar.vue";
+
+document.title = "MDOF Buildings Analyser";
 </script>
 
 <template>

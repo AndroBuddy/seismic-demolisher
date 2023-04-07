@@ -12,6 +12,29 @@ const exportGraph = [{ name: "Some param 1" }, { name: "Some param 2" }];
 
 let modalVal = "Modal value";
 let exportParam = "Select Parameter";
+
+const fileReader = (file) => {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    console.log(e.target.result);
+  };
+
+  reader.readAsDataURL(file);
+};
+
+const buildingData = (e) => {
+  const csvData = e.target.files || e.dataTransfer.files;
+  if (!csvData) return;
+
+  fileReader(csvData[0]);
+};
+
+const groundMotionData = (e) => {
+  const csvData = e.target.files || e.dataTransfer.files;
+  if (!csvData) return;
+
+  fileReader(csvData[0]);
+};
 </script>
 
 <template>
@@ -24,12 +47,16 @@ let exportParam = "Select Parameter";
         >
           <div class="py-4 grid grid-cols-2 items-center gap-6">
             <span>Load building data</span>
-            <span class="bg-[#ECFFFF] rounded-lg p-2">Data as csv</span>
+            <input
+              type="file"
+              @change="buildingData"
+              class="w-64 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#ECFFFF] file:text-[#3769FF] hover:file:bg-violet-100"
+            />
           </div>
           <div class="py-4 grid grid-cols-2 items-center gap-6">
             <span>Modal information</span>
 
-            <Menu as="div" class="relative inline-block text-left w-56">
+            <Menu as="div" class="relative inline-block text-left w-64">
               <div>
                 <MenuButton
                   class="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-[#ECFFFF] p-2 ring-gray-300 hover:bg-gray-50"
@@ -48,7 +75,7 @@ let exportParam = "Select Parameter";
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute left-0 z-10 mt-2 w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <div class="py-1">
                     <MenuItem v-slot="{ active }" v-for="item in menuGraph">
@@ -76,7 +103,11 @@ let exportParam = "Select Parameter";
         >
           <div class="py-4 grid grid-cols-2 items-center gap-6">
             <span>Load ground motions</span>
-            <span class="bg-[#ECFFFF] rounded-lg p-2">Data as csv</span>
+            <input
+              type="file"
+              @change="groundMotionData"
+              class="w-64 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#ECFFFF] file:text-[#3769FF] hover:file:bg-violet-100"
+            />
           </div>
 
           <div class="py-4 grid grid-cols-2 items-center gap-6">
@@ -98,7 +129,7 @@ let exportParam = "Select Parameter";
 
           <div class="py-4 grid grid-cols-2 items-center gap-6">
             <span>Export options</span>
-            <Menu as="div" class="relative inline-block text-left w-56">
+            <Menu as="div" class="relative inline-block text-left w-64">
               <div>
                 <MenuButton
                   class="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-[#ECFFFF] p-2 ring-gray-300 hover:bg-gray-50"
@@ -117,7 +148,7 @@ let exportParam = "Select Parameter";
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute left-0 z-10 mt-2 w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <div class="py-1">
                     <MenuItem v-slot="{ active }" v-for="item in exportGraph">
