@@ -8,7 +8,7 @@ const navGraph = [
 </script>
 
 <template>
-  <header>
+  <header class="fixed z-40 bg-[#ECFFFF]">
     <nav
       class="flex w-screen items-center gap-8 sm:gap-12 border-[#EBEBEB] border-b-[1px]"
     >

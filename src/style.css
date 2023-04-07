@@ -26,9 +26,10 @@ body {
   scrollbar-width: none;
 
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   @apply w-0;
 }
 
