@@ -1,4 +1,6 @@
 <script setup>
+import { Bars3Icon } from "@heroicons/vue/24/solid";
+
 const navGraph = [
   { name: "Home", href: "/" },
   { name: "Help", href: "/help" },
@@ -7,23 +9,17 @@ const navGraph = [
 
 <template>
   <header>
-    <nav class="flex w-screen items-center gap-12 border-[#EBEBEB] border-b-[1px]">
-      <div class="bg-[#3769FF] p-6">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 8H28V10.6667H4V8ZM4 14.6667H28V17.3333H4V14.6667ZM4 21.3333H28V24H4V21.3333Z"
-            fill="white"
-          />
-        </svg>
+    <nav
+      class="flex w-screen items-center gap-8 sm:gap-12 border-[#EBEBEB] border-b-[1px]"
+    >
+      <div class="bg-[#3769FF] p-5 sm:p-6" @click="$emit('slideInOut')">
+        <Bars3Icon class="h-6 w-6 text-white" aria-hidden="true" />
       </div>
       <ul class="flex gap-8">
-        <li v-for="nav in navGraph" class="hover:font-semibold transition-transform text-[#727272] hover:text-[#3769FF]">
+        <li
+          v-for="nav in navGraph"
+          class="hover:font-semibold transition-transform text-[#727272] hover:text-[#3769FF]"
+        >
           <router-link :to="nav.href">{{ nav.name }}</router-link>
         </li>
       </ul>

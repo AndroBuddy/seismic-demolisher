@@ -38,14 +38,17 @@ const groundMotionData = (e) => {
 </script>
 
 <template>
-  <div class="wrapper flex gap-8 px-7 py-8 bg-[#ECFFFF] h-full">
-    <section class="flex flex-col gap-8">
+  <div class="wrapper flex gap-8 sm:px-7 sm:py-8 bg-[#ECFFFF] min-h-full">
+    <section
+      id="inputBar"
+      class="absolute sm:static bg-[#ECFFFF] p-6 sm:p-0 w-full sm:w-auto flex flex-col gap-8"
+    >
       <div class="flex flex-col gap-4">
         <h1>Building data</h1>
         <div
           class="grid grid-rows-2 bg-white rounded-2xl border-[#EBEBEB] border-[1px] px-4 divide-dashed divide-y"
         >
-          <div class="py-4 grid grid-cols-2 items-center gap-6">
+          <div class="py-4 grid sm:grid-cols-2 items-center gap-4 sm:gap-6">
             <span>Load building data</span>
             <input
               type="file"
@@ -53,10 +56,10 @@ const groundMotionData = (e) => {
               class="w-64 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#ECFFFF] file:text-[#3769FF] hover:file:bg-violet-100"
             />
           </div>
-          <div class="py-4 grid grid-cols-2 items-center gap-6">
+          <div class="py-4 grid sm:grid-cols-2 items-center gap-4 sm:gap-6">
             <span>Modal information</span>
 
-            <Menu as="div" class="relative inline-block text-left w-64">
+            <Menu as="div" class="relative inline-block text-left">
               <div>
                 <MenuButton
                   class="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-[#ECFFFF] p-2 ring-gray-300 hover:bg-gray-50"
@@ -75,7 +78,7 @@ const groundMotionData = (e) => {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-2 w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute left-0 z-10 mt-2 w-full sm:w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <div class="py-1">
                     <MenuItem v-slot="{ active }" v-for="item in menuGraph">
@@ -101,7 +104,7 @@ const groundMotionData = (e) => {
         <div
           class="grid grid-rows-2 bg-white rounded-2xl border-[#EBEBEB] border-[1px] px-4 divide-dashed divide-y"
         >
-          <div class="py-4 grid grid-cols-2 items-center gap-6">
+          <div class="py-4 grid sm:grid-cols-2 items-center gap-4 sm:gap-6">
             <span>Load ground motions</span>
             <input
               type="file"
@@ -110,7 +113,7 @@ const groundMotionData = (e) => {
             />
           </div>
 
-          <div class="py-4 grid grid-cols-2 items-center gap-6">
+          <div class="py-4 grid sm:grid-cols-2 items-center gap-4 sm:gap-6">
             <span>GM Analysis</span>
             <div class="flex flex-col gap-3">
               <div v-for="option in gmAnalysis" class="flex items-center">
@@ -127,9 +130,9 @@ const groundMotionData = (e) => {
             </div>
           </div>
 
-          <div class="py-4 grid grid-cols-2 items-center gap-6">
+          <div class="py-4 grid sm:grid-cols-2 items-center gap-4 sm:gap-6">
             <span>Export options</span>
-            <Menu as="div" class="relative inline-block text-left w-64">
+            <Menu as="div" class="relative inline-block text-left">
               <div>
                 <MenuButton
                   class="inline-flex w-full justify-between gap-x-1.5 rounded-md bg-[#ECFFFF] p-2 ring-gray-300 hover:bg-gray-50"
@@ -148,7 +151,7 @@ const groundMotionData = (e) => {
                 leave-to-class="transform opacity-0 scale-95"
               >
                 <MenuItems
-                  class="absolute left-0 z-10 mt-2 w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  class="absolute left-0 z-10 mt-2 w-full sm:w-64 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 >
                   <div class="py-1">
                     <MenuItem v-slot="{ active }" v-for="item in exportGraph">
@@ -198,7 +201,7 @@ const groundMotionData = (e) => {
       </div>
     </section>
 
-    <section class="bg-white flex h-full flex-grow rounded-2xl"></section>
+    <section class="bg-white flex flex-grow rounded-2xl m-6"></section>
   </div>
 </template>
 
