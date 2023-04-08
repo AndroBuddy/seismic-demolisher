@@ -39,12 +39,12 @@ const groundMotionData = (e) => {
 </script>
 
 <template>
-  <div class="wrapper flex gap-8 2xl:px-7 2xl:py-8 bg-[#ECFFFF] h-screen">
+  <div class="wrapper sm:flex gap-8 2xl:px-7 2xl:py-8 bg-[#ECFFFF] h-screen">
     <div
-      class="absolute 2xl:static z-30 overflow-y-auto h-[calc(100vh-73px)] w-full sm:w-auto"
+      id="inputBar"
+      class="absolute z-10 2xl:static overflow-y-auto h-[calc(100vh-65px)] sm:h-[calc(100vh-73px)] w-full sm:w-auto"
     >
       <section
-        id="inputBar"
         class="bg-[#ECFFFF] border-[#EBEBEB] border-r-[1px] 2xl:border-0 p-6 2xl:p-0 flex flex-col gap-8"
       >
         <div class="flex flex-col gap-4">
@@ -119,7 +119,7 @@ const groundMotionData = (e) => {
 
           <button
             type="submit"
-            class="group relative flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3769FF]"
+            class="group relative flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3769FF] mb-10"
           >
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
               <DocumentIcon
@@ -133,32 +133,46 @@ const groundMotionData = (e) => {
       </section>
     </div>
 
-    <section
-      class="bg-white flex flex-col sm:flex-row flex-grow gap-4 rounded-2xl m-6 2xl:m-0 p-4"
+    <div
+      class="absolute sm:static overflow-y-auto h-[calc(100vh-65px)] sm:h-[calc(100vh-137px)] flex-grow w-full sm:w-auto"
     >
-      <div class="bg-[#ECFFFF] sm:w-[40%] h-[40%] sm:h-full rounded-xl"></div>
-      <div
-        class="flex-grow flex flex-col gap-8 justify-between h-[60%] sm:h-full"
+      <section
+        class="bg-white flex flex-col sm:flex-row h-full gap-4 rounded-2xl m-6 2xl:m-0 p-4"
       >
-        <section class="flex flex-col gap-6">
-          <div class="grid sm:grid-cols-2 gap-6">
-            <DropDown :modal-val="exportParam" :item-graph="exportGraph" />
-            <DropDown :modal-val="storySelector" :item-graph="storyGraph" />
-          </div>
+        <div
+          class="bg-[#ECFFFF] sm:w-[40%] h-[40vh] sm:h-full rounded-xl"
+        ></div>
+        <div
+          class="flex-grow flex flex-col gap-8 justify-between h-[60%] sm:h-full"
+        >
+          <section class="flex flex-col gap-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <DropDown :modal-val="exportParam" :item-graph="exportGraph" />
+              <DropDown :modal-val="storySelector" :item-graph="storyGraph" />
+            </div>
 
-          <div class="grid sm:grid-cols-2 justify-center gap-6">
-            <span class="flex items-center gap-6 sm:justify-between"
-              >X: <DropDown :modal-val="exportParam" :item-graph="exportGraph"
-            /></span>
-            <span class="flex items-center gap-6 sm:justify-between"
-              >Y: <DropDown :modal-val="exportParam" :item-graph="exportGraph"
-            /></span>
-          </div>
-        </section>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <span class="flex items-center gap-6 sm:justify-between"
+                >X:
+                <DropDown
+                  class="w-full"
+                  :modal-val="exportParam"
+                  :item-graph="exportGraph"
+              /></span>
+              <span class="flex items-center gap-6 sm:justify-between"
+                >Y:
+                <DropDown
+                  class="w-full"
+                  :modal-val="exportParam"
+                  :item-graph="exportGraph"
+              /></span>
+            </div>
+          </section>
 
-        <div class="bg-[#ECFFFF] flex-grow sm:h-auto rounded-xl"></div>
-      </div>
-    </section>
+          <div class="bg-[#ECFFFF] flex-grow sm:h-auto rounded-xl"></div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 

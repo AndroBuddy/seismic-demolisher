@@ -28,7 +28,7 @@ const slideInOut = () => {
 <template>
   <div class="h-screen flex flex-col">
     <NavBar @slide-in-out="slideInOut" />
-    <router-view class="mt-[65px] sm:mt-[71px]"></router-view>
+    <router-view class="mt-[65px] sm:mt-[73px]"></router-view>
   </div>
 </template>
 
