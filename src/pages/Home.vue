@@ -14,27 +14,37 @@ let modalVal = "Modal value";
 let exportParam = "Select Parameter";
 let storySelector = "All Stories";
 
+let buildingData, groundMotions;
+
+const compileData = () => {
+  console.log(buildingData);
+  console.log(groundMotions);
+};
+
+const csvInput = (e) => {
+  const csvData = e.target.files || e.dataTransfer.files;
+  if (!csvData) return;
+
+  getData(csvData[0], e.target.id);
+
+  console.log(buildingData);
+};
+
+const getData = (file, x) => {
+  fileReader(file).then((content) => {
+    if (x == "buildingInfo") buildingData = content;
+    else groundMotions = content;
+    console.log(content);
+  });
+};
+
 const fileReader = (file) => {
   const reader = new FileReader();
-  reader.onload = (e) => {
-    console.log(e.target.result);
-  };
 
-  reader.readAsDataURL(file);
-};
-
-const buildingData = (e) => {
-  const csvData = e.target.files || e.dataTransfer.files;
-  if (!csvData) return;
-
-  fileReader(csvData[0]);
-};
-
-const groundMotionData = (e) => {
-  const csvData = e.target.files || e.dataTransfer.files;
-  if (!csvData) return;
-
-  fileReader(csvData[0]);
+  return new Promise((resolve) => {
+    reader.onload = (e) => resolve(e.target.result);
+    reader.readAsText(file);
+  });
 };
 </script>
 
@@ -55,8 +65,9 @@ const groundMotionData = (e) => {
             <div class="py-4 grid 2xl:grid-cols-2 items-center gap-4 sm:gap-6">
               <span>Load building data</span>
               <input
+                id="buildingInfo"
                 type="file"
-                @change="buildingData"
+                @change="csvInput"
                 class="w-64 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#ECFFFF] file:text-[#3769FF] hover:file:bg-violet-100"
               />
             </div>
@@ -74,8 +85,9 @@ const groundMotionData = (e) => {
             <div class="py-4 grid 2xl:grid-cols-2 items-center gap-4 sm:gap-6">
               <span>Load ground motions</span>
               <input
+                id="groundMotions"
                 type="file"
-                @change="groundMotionData"
+                @change="csvInput"
                 class="w-64 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#ECFFFF] file:text-[#3769FF] hover:file:bg-violet-100"
               />
             </div>
@@ -106,6 +118,7 @@ const groundMotionData = (e) => {
         <div class="flex flex-col gap-4">
           <button
             type="submit"
+            @click="compileData"
             class="group relative flex w-full justify-center rounded-md bg-[#3769FF] px-3 py-2 text-sm font-semibold text-white hover:bg-[#698EFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3769FF]"
           >
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
