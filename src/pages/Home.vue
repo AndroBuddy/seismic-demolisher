@@ -73,7 +73,7 @@ const graphPlot = ref('');
 async function getGraph() {
   if (parseList.value.gm !== '' && parseList.value.x !== '' && parseList.value.y !== '') {
     try {
-      const data = await axios.post("http://206.189.130.78/sesmic", parseList.value);
+      const data = await axios.post("https://seismic.nagatharun.me/sesmic", parseList.value);
       graphPlot.value = data.data.url;
     } catch (error) {
       console.log(error);
@@ -104,7 +104,7 @@ function collector(item, targ) {
 <template>
   <div class="wrapper sm:flex gap-8 2xl:px-7 2xl:py-8 bg-[#ECFFFF] h-screen">
     <div id="inputBar"
-      class="absolute z-10 2xl:static overflow-y-auto h-[calc(100vh-65px)] sm:h-[calc(100vh-73px)] w-full sm:w-[80%] md:w-[60%] lg:w-[34%] overflow-clip">
+      class="absolute z-10 xl:static overflow-y-auto h-[calc(100vh-65px)] sm:h-[calc(100vh-73px)] w-full sm:w-[80%] md:w-[60%] lg:w-[34%] overflow-clip">
       <form id="navbody" @submit.prevent="compileData"
         class="bg-[#ECFFFF] border-[#EBEBEB] border-r-[1px] 2xl:border-0 p-6 2xl:p-0 flex flex-col gap-8 h-full">
         <div class="flex flex-col gap-4 shrink-0">
