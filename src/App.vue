@@ -14,7 +14,7 @@ function calcWidth() {
 	} else if (window.innerWidth < 1024) {
 		return "60%";
 	} else {
-		return "40%";
+		return "34%";
 	}
 }
 
@@ -45,7 +45,7 @@ const slideInOut = () => {
 		anime({
 			targets: "#navbody",
 			opacity: [1, 0],
-			duration: 1000,
+			duration: 750,
 			easing: "easeInOutExpo",
 		});
 	}
