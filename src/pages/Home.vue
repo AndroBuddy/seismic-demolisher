@@ -16,7 +16,7 @@ const parseList = ref({
   y: '',
 });
 
-const xGraph = [
+const yGraph = [
   { name: "Ground Acceleration" },
   { name: "Displacement" },
   { name: "Interstory Displ." },
@@ -26,7 +26,7 @@ const xGraph = [
   { name: "Story Restoring Force" },
   { name: "Base Shear" }
 ];
-const yGraph = [{ name: "Time" }, { name: "Interstory Displ." }, { name: "IDR" }];
+const xGraph = [{ name: "Time" }, { name: "Interstory Displ." }, { name: "IDR" }];
 const gmAnalysisGraph = [
   { name: "GM1 (SF = 1)" },
   { name: "GM2 (SF = 0.5)" },
@@ -135,7 +135,7 @@ function collector(item, targ) {
               <span>GM Analysis</span>
               <div class="flex flex-col gap-3">
                 <div v-for="option in gmAnalysis" class="flex items-center">
-                  <input :id="option.id" :name="option.id" type="checkbox"
+                  <input :id="option.id" :name="option.id" type="checkbox" checked="true"
                     class="h-4 w-4 rounded border-gray-300 text-gray-400 focus:ring-[#3769FF]" />
                   <label :for="option.id" class="ml-2 block text-sm">{{
                     option.name
